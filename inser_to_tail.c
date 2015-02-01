@@ -42,7 +42,6 @@ int add_at_tail()
 		}
 		else
 		{
-			//head->link=new;
 			temp->link=new;
 			temp=new;
 		}
