@@ -4,6 +4,11 @@
   Date:01-02-15*/
 
 
+
+
+
+
+
 #include<stdio.h>
 
 struct node
@@ -63,11 +68,3 @@ int display()
 	}
 	printf("NULL");
 }
-		
-		
-		
-			
-	
-	
-	
-	
