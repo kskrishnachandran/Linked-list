@@ -7,7 +7,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int count;
+int node_count = 0;
+int mi = 0;
 
 struct node                                                 //Structer declaration
 {
@@ -68,7 +69,6 @@ int main() {
 
 
 int insert_at_head() {
-	count++;
 	char choice1;
 	do {
 		struct node *head_new;
@@ -77,8 +77,7 @@ int insert_at_head() {
 		scanf("%d",&head_new->num);
 		head_new->link = NULL;
 		if(head == NULL) {
-			head = he
-			d_new;
+			head = head_new;
 		}
 		else {
 			head_new->link = head;
@@ -114,13 +113,67 @@ int insert_at_tail() {
 	printf("\n\n");
 }
 
-int modify_list()
-{
+int modify_list() {
+	int new_num;
+	char moc;                                                        //Character to store the user's choice
 	struct node *modify;
+	modify = (struct node *)malloc(sizeof(struct node));
 	modify = head;
 	int nod;
-	printf("\nEnter the node number of the list to modify     ");
-}	
+	printf("\nEnter the number to be searched in the list     ");
+	scanf("%d",&nod);
+	if(head == NULL) {
+		printf("\n\nThe list is empty, search is not possible");
+	}
+	else {
+		while(modify != NULL) {
+			mi++;                                                     //To count the list number
+			if(modify->num == nod) {
+				printf("\n\n%d is present in the %d list", nod, mi);
+				printf("\n\nDo you want to modify this list (Y/N)    ");
+				scanf(" %c", &moc);
+				if(moc == 'Y' || moc == 'y') {
+					system("clear");
+					printf("\n\n**Modifying the list**\n");
+					printf("\nEnter the new number   ");
+					scanf("%d", &new_num);
+					modify->num = new_num;
+					break;
+				}
+			}
+			modify = modify->link;
+		}
+	}
+}
+
+int delete_node() {
+	if (head == NULL) {
+		printf("\n\nList is empty deletion not possible  ");
+		break;
+	}
+	struct node *ctemp;
+	ctemp = (struct node *)malloc(sizeof(struct node));
+	ctemp = head;
+	while(ctemp != NULL) {
+		node_count++;
+		ctemp = ctemp->link;
+	}
+	struct node *delete;
+	delete = head;
+	int no;
+	printf("\n\nEnter the node number for deleting from the list    ");
+	scanf("%d", &no);
+	if(no > node_count)
+	{
+		printf("\n\nInvalid node number, deletion not possible\n");
+		break;
+	}
+	struct node *delete;
+	delete = (struct node *)malloc(sizeof(struct node));
+	delete = head;
+	
+		
+	
 int display() {
 	system("clear");
 	printf("\n\n\n");
