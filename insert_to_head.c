@@ -12,8 +12,7 @@ struct node
 	int number;
 	struct node *link;
 }*head=NULL;
-
-
+ 
 
 int add_at_head();
 int display(); 
