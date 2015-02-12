@@ -4,6 +4,7 @@
 
 
 
+
 /*Description :-
         C program for executing a menu driven program to deal with linked lists.
         The Menu consists of options like 1)Add to head
@@ -67,7 +68,7 @@ int main() {
 				     display();
 				     break;
 
-			case 4 : printf("\n\n**Delete from node**\n\n");
+			case 4 : printf("\n\n");
 				     delete_node();
 				     display();
 				     break;
@@ -136,6 +137,7 @@ int insert_at_tail() {
 }
 
 
+
 //Function to search an elemet from the list an to modify the value if the user wants to.
 int modify_list() {
 	if(head == NULL) {
@@ -178,11 +180,15 @@ int modify_list() {
 
 //Functin to delete nodes from the list according to the user's choice.
 int delete_node() {
-	
 	if (head == NULL) {
 		printf("\n\nList is empty deletion not possible  ");
 		return 0;
 	}
+	int dchoice;                                                    //Variable to store the user's choice in delete list
+	printf("\n**Delete Menu**");
+	printf("\n1.Delete list at head\n2.Delete list at tail\n3.Delete other lists\n");
+	printf("\nPlease enter a choice   ");
+	scanf("%d",&dchoice);
 	struct node *ctemp;
 	ctemp = (struct node *)malloc(sizeof(struct node));
 	ctemp = head;
@@ -190,28 +196,52 @@ int delete_node() {
 		node_count++;
 		ctemp = ctemp->link;
 	}
-	struct node *first_delete;
-	struct node *second_delete;
-	int no;
-	printf("\n\nEnter the node number for deleting from the list    ");
-	scanf("%d", &no);
-	if(no > node_count)
-	{
-		printf("\n\nInvalid node number, deletion not possible\n");
-		return 0;
-	}
-	first_delete = (struct node *)malloc(sizeof(struct node));
-	second_delete = (struct node *)malloc(sizeof(struct node));
-	first_delete = head;
-	second_delete = head;
 	int i;
-	for(i = 1; i < no-1; i++) {
-		first_delete = first_delete->link;
-	}
-	for(i = 1; i < no+1; i++) {
-		second_delete = second_delete->link;
-	}
-	first_delete->link = second_delete;      //Changing the value of link part of the preceding node of the deleted link
+	switch(dchoice) {
+		case 1 : printf("\nDeleting the node at the head of the list !!!");
+			head = head->link;
+			break;
+			
+			
+		case 2 : printf("\nDeleting the node at the tail of the list !!!");
+			struct node *dtemp;
+			dtemp = (struct node *)malloc(sizeof(struct node));
+			dtemp = head;
+			for(i = 1; i < node_count-1; i++) {
+				dtemp = dtemp->link;
+			}
+			dtemp->link = NULL;
+			break;
+			
+			
+		case 3 : printf("\n**Deleting the elements from the list**");
+			struct node *first_delete;
+			struct node *second_delete;
+			int no;
+			printf("\n\nEnter the node number for deleting from the list    ");
+			scanf("%d", &no);
+			if(no > node_count)
+			{
+				printf("\n\nInvalid node number, deletion not possible\n");
+				return 0;
+			}
+			printf("\n**Deleting the %dth node from the list**\n",no);
+			first_delete = (struct node *)malloc(sizeof(struct node));
+			second_delete = (struct node *)malloc(sizeof(struct node));
+			first_delete = head;
+			second_delete = head;
+			for(i = 1; i < no-1; i++) {
+				first_delete = first_delete->link;
+			}
+			for(i = 1; i < no+1; i++) {
+				second_delete = second_delete->link;
+			}
+			first_delete->link = second_delete;      //Changing the value of link part of the preceding node of the deleted link
+			break;
+			
+			default : printf("\nPlease enter a valid choice ");
+				break;
+		}
 	return 0;
 }
 
@@ -234,6 +264,7 @@ int display() {
 	printf("\n\n");
 	return 0;
 }
+
 
 
 //Function to display the list starting from it's tail.
