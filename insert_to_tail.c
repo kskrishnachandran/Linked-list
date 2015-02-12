@@ -9,8 +9,7 @@
 
 #include<stdio.h>
 
-struct node
-{
+struct node {
 	int number;
 	struct node *link;
 } *head=NULL;
@@ -18,8 +17,7 @@ struct node
 int add_at_tail();
 int display();
 
-int main()
-{
+int main() {
 	system("clear");
 	add_at_tail();
 	display();
@@ -27,24 +25,20 @@ int main()
 	return 0;
 }
 
-int add_at_tail()
-{
+int add_at_tail() {
 	char ch;
-	do
-	{
+	do {
 		struct node *new;
 		struct node *temp;
 		new=(struct node *)malloc(sizeof(struct node));
 		printf("\nEnter the numer to the tail   ");
 		scanf("%d",&new->number);
 		new->link=NULL;
-		if(head==NULL)
-		{
+		if(head==NULL) {
 			head=new;
 			temp=new;
 		}
-		else
-		{
+		else {
 			temp->link=new;
 			temp=new;
 		}
@@ -53,13 +47,11 @@ int add_at_tail()
 	}while(ch=='Y'||ch=='y');
 }
 
-int display()
-{
+int display() {
 	struct node *disp;
 	disp=head;
 	printf("\nThe numbers in the list are\n");
-	while(disp!=NULL)
-	{
+	while(disp!=NULL) {
 		printf("%d --> ",disp->number);
 		disp=disp->link;
 	}
