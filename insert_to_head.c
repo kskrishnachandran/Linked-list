@@ -7,8 +7,7 @@
 
 #include<stdio.h>
 
-struct node
-{
+struct node {
 	int number;
 	struct node *link;
 }*head=NULL;
@@ -17,8 +16,7 @@ struct node
 int add_at_head();
 int display(); 
 
-int main()
-{
+int main() {
 	system("clear");
 	add_at_head(); 
 	display();
@@ -27,22 +25,18 @@ int main()
 } 
 
 
-int add_at_head()
-{
+int add_at_head() {
 	char ch;
-	do
-	{
+	do {
 		struct node *new;
 		new=(struct node *)malloc(sizeof(struct node));
 		printf("\n\nEnter the number to the head    ");
 		scanf("%d",&new->number);
 		new->link=NULL;
-		if(head==NULL)
-		{
+		if(head==NULL) {
 			head=new;
 		}
-		else
-		{
+		else {
 			new->link=head;
 			head=new;
 		}
@@ -51,13 +45,11 @@ int add_at_head()
 	}while(ch=='Y'||ch=='y');
 }
 
-int display()
-{
+int display() {
 	struct node *disp;
 	disp=head;
 	printf("\n\nThe numers in the list are \n");
-	while(disp!=NULL)
-	{
+	while(disp!=NULL) {
 		printf("%d <-- ",disp->number);
 		disp=disp->link;
 	}
